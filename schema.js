@@ -17,7 +17,8 @@ const LaunchType = new GraphQLObjectType({
         launch_year: { type: GraphQLInt },
         launch_date_utc: { type: GraphQLString },
         rocket: { type: RocketType },
-        launch_success: { type: GraphQLBoolean }
+        launch_success: { type: GraphQLBoolean },
+        links: { type: LinksType }
     })
 });
 
@@ -33,14 +34,57 @@ const RocketType = new GraphQLObjectType({
 const LinksType = new GraphQLObjectType({
     name: "Links",
     fields: () => ({
+        mission_patch: { type: GraphQLString },
         article_link: { type: GraphQLString },
         video_link: { type: GraphQLString },
-        flickr_images: { type: GraphQLList }
+        flickr_images: { type: GraphQLList(GraphQLString) }
     })
 });
 
 const RootQuery = new GraphQLObjectType({
-    name: "RootQueryType"
+    name: "RootQueryType",
+    fields: {
+        launches: {
+            type: new GraphQLList(LaunchType),
+            resolve(parent, args) {
+                return axios
+                    .get("https://api.spacexdata.com/v3/launches")
+                    .then(res => res.data);
+            }
+        },
+        launch: {
+            type: LaunchType,
+            args: {
+                flight_number: { type: GraphQLInt }
+            },
+            resolve(parent, args) {
+                return axios
+                    .get(
+                        `https://api.spacexdata.com/v3/launches/${args.flight_number}`
+                    )
+                    .then(res => res.data);
+            }
+        },
+        rockets: {
+            type: new GraphQLList(RocketType),
+            resolve(parent, args) {
+                return axios
+                    .get("https://api.spacexdata.com/v3/rockets")
+                    .then(res => res.data);
+            }
+        },
+        rocket: {
+            type: RocketType,
+            args: {
+                id: { type: GraphQLInt }
+            },
+            resolve(parent, args) {
+                return axios
+                    .get(`https://api.spacexdata.com/v3/rockets/${args.id}`)
+                    .then(res => res.data);
+            }
+        }
+    }
 });
 
 module.exports = new GraphQLSchema({
