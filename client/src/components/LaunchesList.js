@@ -1,4 +1,7 @@
+// React
 import React, { Component } from "react";
+
+// GraphQL
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 
@@ -11,6 +14,7 @@ const LAUNCHESLIST_QUERY = gql`
             launch_success
             links {
                 flickr_images
+                mission_patch
             }
         }
     }
@@ -19,7 +23,7 @@ const LAUNCHESLIST_QUERY = gql`
 class LaunchesList extends Component {
     render() {
         return (
-            <>
+            <div className="launches-list">
                 <h1>LaunchesList</h1>
                 <Query query={LAUNCHESLIST_QUERY}>
                     {({ loading, error, data }) => {
@@ -27,21 +31,46 @@ class LaunchesList extends Component {
                         if (error) console.log(error);
 
                         return (
-                            <>
+                            <ul className="list">
                                 {data.launches.map(launch => (
-                                    <>
-                                        <p>{launch.flight_number}</p>
-                                        <p>{launch.mission_name}</p>
-                                        <p>{launch.launch_date_utc}</p>
-                                        <p>{launch.launch_success}</p>
-                                        <p>{launch.links.flickr_images[0]}</p>
-                                    </>
+                                    <div
+                                        key={launch.flight_number}
+                                        className="launch-item"
+                                    >
+                                        <li>
+                                            <p>{launch.flight_number}</p>
+                                            <p>{launch.mission_name}</p>
+                                            <p>{launch.launch_date_utc}</p>
+                                            <p>{launch.launch_success}</p>
+                                            {launch.links.flickr_images[0] ? (
+                                                <img
+                                                    className="launch-image"
+                                                    src={
+                                                        launch.links
+                                                            .flickr_images[0]
+                                                    }
+                                                    alt="Launch"
+                                                ></img>
+                                            ) : launch.links.mission_patch ? (
+                                                <img
+                                                    className="launch-image"
+                                                    src={
+                                                        launch.links
+                                                            .mission_patch
+                                                    }
+                                                    alt="Launch"
+                                                ></img>
+                                            ) : (
+                                                <p>Mission is about to start</p>
+                                            )}
+                                        </li>
+                                    </div>
                                 ))}
-                            </>
+                            </ul>
                         );
                     }}
                 </Query>
-            </>
+            </div>
         );
     }
 }

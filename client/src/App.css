@@ -9,7 +9,7 @@ body {
   font-family: "Raleway", sans-serif;
   font-size: 1rem;
   line-height: 1.5;
-  color: #343a40;
+  color: #ddd;
   background-color: #000;
 }
 
@@ -30,5 +30,29 @@ a {
   width: 20rem;
   display: block;
   margin: auto;
+}
+
+.launches-list {
+  padding: 2rem;
+}
+
+.launches-list .list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.launches-list .list .launch-item {
+  padding: 1rem;
+  background-color: #030303;
+  border: 1px solid #090909;
+  border-radius: 25px;
+}
+
+.launches-list .list .launch-image {
+  width: 100%;
+  max-height: 18rem;
 }
 /*# sourceMappingURL=App.css.map */

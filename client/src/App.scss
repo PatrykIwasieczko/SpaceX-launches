@@ -8,7 +8,7 @@ body {
     font-family: "Raleway", sans-serif;
     font-size: 1rem;
     line-height: 1.5;
-    color: #343a40;
+    color: #ddd;
     background-color: #000;
 }
 
@@ -29,4 +29,25 @@ a {
     width: 20rem;
     display: block;
     margin: auto;
+}
+
+.launches-list {
+    padding: 2rem;
+    .list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 1rem;
+
+        .launch-item {
+            padding: 1rem;
+            background-color: #030303;
+            border: 1px solid #090909;
+            border-radius: 25px;
+        }
+
+        .launch-image {
+            width: 100%;
+            max-height: 18rem;
+        }
+    }
 }
