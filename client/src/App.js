@@ -8,6 +8,7 @@ import { ApolloProvider } from "react-apollo";
 
 // Components
 import LaunchesList from "./components/LaunchesList";
+import SingleLaunch from "./components/SingleLaunch";
 
 // Styles & logo
 import "./App.scss";
@@ -24,6 +25,10 @@ function App() {
                 <div className="container">
                     <img className="logo" src={logo} alt="SpaceX" />
                     <Route exact path="/" component={LaunchesList} />
+                    <Route
+                        path="/launch/:flight_number"
+                        component={SingleLaunch}
+                    />
                 </div>
             </BrowserRouter>
         </ApolloProvider>

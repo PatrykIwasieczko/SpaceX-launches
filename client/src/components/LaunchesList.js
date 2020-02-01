@@ -1,5 +1,6 @@
 // React
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 
 // GraphQL
 import gql from "graphql-tag";
@@ -63,6 +64,11 @@ class LaunchesList extends Component {
                                             ) : (
                                                 <p>Mission is about to start</p>
                                             )}
+                                            <NavLink
+                                                to={`/launch/${launch.flight_number}`}
+                                            >
+                                                Launch details
+                                            </NavLink>
                                         </li>
                                     </div>
                                 ))}
