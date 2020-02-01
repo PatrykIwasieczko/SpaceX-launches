@@ -10,6 +10,7 @@ body {
   font-size: 1rem;
   line-height: 1.5;
   color: #343a40;
+  background-color: #000;
 }
 
 ul {
@@ -18,5 +19,16 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+.container {
+  width: 80vw;
+  margin: auto;
+}
+
+.logo {
+  width: 20rem;
+  display: block;
+  margin: auto;
 }
 /*# sourceMappingURL=App.css.map */
