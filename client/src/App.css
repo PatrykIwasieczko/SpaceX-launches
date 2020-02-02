@@ -172,4 +172,35 @@ a {
   font-size: 1.5rem;
   text-align: center;
 }
+
+@media screen and (max-width: 900px) {
+  .launches-list .list {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+  .launches-list .list .launch-item .launch-image {
+    max-height: initial;
+  }
+  .single-launch ul li .images-list {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .launches-list .list {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .single-launch ul li .images-list {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .single-launch ul li .images-list .image {
+    max-height: initial;
+  }
+  .single-launch .links {
+    font-size: 1.1rem;
+  }
+}
 /*# sourceMappingURL=App.css.map */
