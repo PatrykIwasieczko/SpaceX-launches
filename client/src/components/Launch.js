@@ -35,7 +35,7 @@ const Launch = ({
                         alt="Launch"
                     ></img>
                 ) : (
-                    <p>Mission is about to start</p>
+                    <p className="no-image-text">Mission is about to start</p>
                 )}
             </li>
             <NavLink to={`/launch/${flight_number}`}>Launch details</NavLink>

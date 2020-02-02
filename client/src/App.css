@@ -109,6 +109,10 @@ a {
           transform: scale(1.1);
 }
 
+.launches-list .list .launch-item .no-image-text {
+  margin-bottom: 2rem;
+}
+
 .single-launch {
   text-align: center;
 }
