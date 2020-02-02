@@ -9,6 +9,7 @@ import { ApolloProvider } from "react-apollo";
 // Components
 import LaunchesList from "./components/LaunchesList";
 import LaunchDetails from "./components/LaunchDetails";
+import TopArrow from "./components/TopArrow";
 
 // Styles & logo
 import "./App.scss";
@@ -30,6 +31,7 @@ function App() {
                         component={LaunchDetails}
                     />
                 </div>
+                <TopArrow />
             </BrowserRouter>
         </ApolloProvider>
     );
