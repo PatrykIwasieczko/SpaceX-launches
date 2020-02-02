@@ -40,15 +40,38 @@ a {
         grid-gap: 1rem;
 
         .launch-item {
+            display: flex;
+            flex-direction: column;
             padding: 1rem;
             background-color: #030303;
             border: 1px solid #090909;
             border-radius: 25px;
-        }
+            position: relative;
 
-        .launch-image {
-            width: 100%;
-            max-height: 18rem;
+            li {
+                font-size: 1.3rem;
+                text-align: center;
+            }
+            .launch-image {
+                margin: 2rem 0;
+                width: 100%;
+                max-height: 18rem;
+            }
+
+            a {
+                position: absolute;
+                bottom: 0.5rem;
+                right: 0.5rem;
+                padding: 0.5rem 1rem;
+                border-radius: 25px;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    background-color: #151515;
+                    color: #4ecca3;
+                    transform: scale(1.1);
+                }
+            }
         }
     }
 }

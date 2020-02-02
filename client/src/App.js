@@ -8,7 +8,7 @@ import { ApolloProvider } from "react-apollo";
 
 // Components
 import LaunchesList from "./components/LaunchesList";
-import SingleLaunch from "./components/SingleLaunch";
+import LaunchDetails from "./components/LaunchDetails";
 
 // Styles & logo
 import "./App.scss";
@@ -27,7 +27,7 @@ function App() {
                     <Route exact path="/" component={LaunchesList} />
                     <Route
                         path="/launch/:flight_number"
-                        component={SingleLaunch}
+                        component={LaunchDetails}
                     />
                 </div>
             </BrowserRouter>

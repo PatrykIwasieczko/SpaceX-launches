@@ -29,7 +29,7 @@ const SINGLE_LAUNCH_QUERY = gql`
     }
 `;
 
-class SingleLaunch extends Component {
+class LaunchDetails extends Component {
     render() {
         let { flight_number } = this.props.match.params;
         flight_number = parseInt(flight_number);
@@ -148,4 +148,4 @@ class SingleLaunch extends Component {
     }
 }
 
-export default SingleLaunch;
+export default LaunchDetails;

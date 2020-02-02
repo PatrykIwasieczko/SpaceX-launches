@@ -1,10 +1,12 @@
 // React
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
 
 // GraphQL
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
+
+// Components
+import Launch from "./Launch";
 
 const LAUNCHESLIST_QUERY = gql`
     query LaunchesListQuery {
@@ -34,43 +36,10 @@ class LaunchesList extends Component {
                         return (
                             <ul className="list">
                                 {data.launches.map(launch => (
-                                    <div
+                                    <Launch
                                         key={launch.flight_number}
-                                        className="launch-item"
-                                    >
-                                        <li>
-                                            <p>{launch.flight_number}</p>
-                                            <p>{launch.mission_name}</p>
-                                            <p>{launch.launch_date_utc}</p>
-                                            <p>{launch.launch_success}</p>
-                                            {launch.links.flickr_images[0] ? (
-                                                <img
-                                                    className="launch-image"
-                                                    src={
-                                                        launch.links
-                                                            .flickr_images[0]
-                                                    }
-                                                    alt="Launch"
-                                                ></img>
-                                            ) : launch.links.mission_patch ? (
-                                                <img
-                                                    className="launch-image"
-                                                    src={
-                                                        launch.links
-                                                            .mission_patch
-                                                    }
-                                                    alt="Launch"
-                                                ></img>
-                                            ) : (
-                                                <p>Mission is about to start</p>
-                                            )}
-                                            <NavLink
-                                                to={`/launch/${launch.flight_number}`}
-                                            >
-                                                Launch details
-                                            </NavLink>
-                                        </li>
-                                    </div>
+                                        launch={launch}
+                                    />
                                 ))}
                             </ul>
                         );
