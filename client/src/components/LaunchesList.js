@@ -24,10 +24,45 @@ const LAUNCHESLIST_QUERY = gql`
 `;
 
 class LaunchesList extends Component {
+    state = {
+        searchedMissionName: "",
+        searchParameter: "all"
+    };
+    handleSearchParameterChange = event => {
+        this.setState({
+            searchParameter: event.target.value
+        });
+    };
+    handleMissionNameChange = event => {
+        this.setState({
+            searchedMissionName: event.target.value
+        });
+    };
     render() {
         return (
             <div className="launches-list">
                 <h1>LaunchesList</h1>
+                <div className="search-bar">
+                    <select
+                        value={this.state.searchParameter}
+                        onChange={this.handleSearchParameterChange}
+                        name="searchBy"
+                        id="searchBy"
+                    >
+                        <option value="all">All</option>
+                        <option value="true">Successfull launches</option>
+                        <option value="false">Unsuccessfull launches</option>
+                    </select>
+                    <input
+                        onChange={this.handleMissionNameChange}
+                        type="text"
+                        placeholder="Mission name"
+                    />
+                    <i
+                        onClick={this.handleSearch}
+                        className="fas fa-search fa-2x"
+                    ></i>
+                </div>
                 <Query query={LAUNCHESLIST_QUERY}>
                     {({ loading, error, data }) => {
                         if (loading) return <h4>Loading...</h4>;
@@ -35,12 +70,35 @@ class LaunchesList extends Component {
 
                         return (
                             <ul className="list">
-                                {data.launches.map(launch => (
-                                    <Launch
-                                        key={launch.flight_number}
-                                        launch={launch}
-                                    />
-                                ))}
+                                {data.launches
+                                    .filter(singleLaunch => {
+                                        if (
+                                            this.state.searchParameter === "all"
+                                        ) {
+                                            return singleLaunch.mission_name
+                                                .toLowerCase()
+                                                .includes(
+                                                    this.state.searchedMissionName.toLowerCase()
+                                                );
+                                        } else {
+                                            return (
+                                                singleLaunch.mission_name
+                                                    .toLowerCase()
+                                                    .includes(
+                                                        this.state.searchedMissionName.toLowerCase()
+                                                    ) &&
+                                                String(
+                                                    singleLaunch.launch_success
+                                                ) === this.state.searchParameter
+                                            );
+                                        }
+                                    })
+                                    .map(launch => (
+                                        <Launch
+                                            key={launch.flight_number}
+                                            launch={launch}
+                                        />
+                                    ))}
                             </ul>
                         );
                     }}
