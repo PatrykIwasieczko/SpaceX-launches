@@ -37,6 +37,21 @@ a {
   padding: 2rem;
 }
 
+.launches-list .search-bar {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+}
+
+.launches-list .search-bar select,
+.launches-list .search-bar input {
+  padding: 0.5rem;
+  border-radius: 20px;
+  outline: none;
+}
+
 .launches-list h1 {
   font-size: 3rem;
   text-align: center;
@@ -191,6 +206,13 @@ a {
   .launches-list .list {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
+  }
+  .launches-list .search-bar {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .launches-list .search-bar i {
+    display: none;
   }
   .single-launch ul li .images-list {
     -ms-grid-columns: 1fr;

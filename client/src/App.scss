@@ -33,6 +33,18 @@ a {
 }
 
 .launches-list {
+    .search-bar {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1rem;
+
+        select,
+        input {
+            padding: 0.5rem;
+            border-radius: 20px;
+            outline: none;
+        }
+    }
     h1 {
         font-size: 3rem;
         text-align: center;
@@ -175,6 +187,12 @@ a {
     .launches-list {
         .list {
             grid-template-columns: 1fr;
+        }
+        .search-bar {
+            grid-template-columns: 1fr;
+            i {
+                display: none;
+            }
         }
     }
     .single-launch {
