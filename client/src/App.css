@@ -56,4 +56,83 @@ a {
   width: 100%;
   max-height: 18rem;
 }
+
+.single-launch {
+  text-align: center;
+}
+
+.single-launch h1 {
+  font-size: 3rem;
+}
+
+.single-launch h2 {
+  margin-top: 2rem;
+}
+
+.single-launch .launch-details {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+}
+
+.single-launch .patch-image {
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.single-launch ul li .images-list {
+  margin-top: 5rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+}
+
+.single-launch ul li .images-list .image {
+  width: 100%;
+  max-height: 20rem;
+}
+
+.single-launch .links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  font-size: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.single-launch .links a {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.single-launch .links a:hover {
+  background-color: #151515;
+  color: #4ecca3;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.single-launch .text-success {
+  color: #327c10;
+}
+
+.single-launch .text-danger {
+  color: #f33535;
+}
+
+.single-launch hr {
+  margin: 1rem 0;
+}
+
+.single-launch .rocket-details {
+  font-size: 1.5rem;
+  text-align: center;
+}
 /*# sourceMappingURL=App.css.map */

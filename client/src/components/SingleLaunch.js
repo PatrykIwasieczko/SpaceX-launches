@@ -62,22 +62,19 @@ class SingleLaunch extends Component {
                                     <span className="">Mission:</span>{" "}
                                     {mission_name}
                                 </h1>
-                                <img src={mission_patch} alt="Patch" />
-                                <h4 className="">Launch Details</h4>
+                                {mission_patch ? (
+                                    <img
+                                        className="patch-image"
+                                        src={mission_patch}
+                                        alt="Patch"
+                                    />
+                                ) : (
+                                    <h2>The launch is about to start</h2>
+                                )}
+
+                                <h2 className="">Launch Details</h2>
                                 <div className="launch-details">
                                     <ul>
-                                        <li>
-                                            {flickr_images.map(
-                                                (image, index) => (
-                                                    <img
-                                                        className="image"
-                                                        key={index}
-                                                        src={image}
-                                                        alt="Rocket"
-                                                    />
-                                                )
-                                            )}
-                                        </li>
                                         <li className="">
                                             Flight Number: {flight_number}
                                         </li>
@@ -99,9 +96,23 @@ class SingleLaunch extends Component {
                                                 {launch_success ? "Yes" : "No"}
                                             </span>
                                         </li>
+                                        <li>
+                                            <div className="images-list">
+                                                {flickr_images.map(
+                                                    (image, index) => (
+                                                        <img
+                                                            className="image"
+                                                            key={index}
+                                                            src={image}
+                                                            alt="Rocket"
+                                                        />
+                                                    )
+                                                )}
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div>
-                                <h4 className="">Rocket Details</h4>
+                                <h2 className="">Rocket Details</h2>
                                 <div className="rocket-details">
                                     <ul>
                                         <li>Rocket ID: {rocket_id}</li>
@@ -109,32 +120,25 @@ class SingleLaunch extends Component {
                                         <li>Rocket Type: {rocket_type}</li>
                                     </ul>
                                 </div>
-                                <div className="links">
-                                    <ul>
-                                        <li>
-                                            <a
-                                                rel="noopener noreferrer"
-                                                target="_blank"
-                                                href={article_link}
-                                            >
-                                                Read more
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                rel="noopener noreferrer"
-                                                target="_blank"
-                                                href={video_link}
-                                            >
-                                                Watch video about this launch
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
                                 <hr />
-                                <NavLink to="/" className="btn">
-                                    Back
-                                </NavLink>
+                                <div className="links">
+                                    <NavLink to="/">Back</NavLink>
+                                    <a
+                                        rel="noopener noreferrer"
+                                        target="_blank"
+                                        href={article_link}
+                                    >
+                                        Read more
+                                    </a>
+
+                                    <a
+                                        rel="noopener noreferrer"
+                                        target="_blank"
+                                        href={video_link}
+                                    >
+                                        Watch video
+                                    </a>
+                                </div>
                             </div>
                         );
                     }}
