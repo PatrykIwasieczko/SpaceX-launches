@@ -2,6 +2,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+// Other libraries
+import Moment from "react-moment";
+
 const Launch = ({
     launch: {
         flight_number,
@@ -14,7 +17,9 @@ const Launch = ({
     return (
         <div className="launch-item">
             <li>{mission_name}</li>
-            <li>{launch_date_utc}</li>
+            <li>
+                <Moment format="DD-MM-YYYY">{launch_date_utc}</Moment>
+            </li>
             <li>{launch_success}</li>
             <li>
                 {flickr_images[0] ? (

@@ -6,6 +6,9 @@ import { NavLink } from "react-router-dom";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 
+// Other libraries
+import Moment from "react-moment";
+
 const SINGLE_LAUNCH_QUERY = gql`
     query SingleLaunchQuery($flight_number: Int!) {
         launch(flight_number: $flight_number) {
@@ -82,7 +85,10 @@ class LaunchDetails extends Component {
                                             Launch Year: {launch_year}
                                         </li>
                                         <li className="">
-                                            Launch Date: {launch_date_utc}
+                                            Launch Date:{" "}
+                                            <Moment format="DD-MM-YYYY -- HH:mm">
+                                                {launch_date_utc}
+                                            </Moment>
                                         </li>
                                         <li className="">
                                             Launch Successful:{" "}
